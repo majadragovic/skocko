@@ -17,6 +17,14 @@ input {
   display: inline-block;
   padding: 5px;
 }
+.win {
+  width: 234px;
+  height: 50px;
+  border: 2px solid grey;
+  display: inline-block;
+  padding: 5px;
+  margin-top: 5px;
+}
 input[type="image"] {
   width: 15px;
   height: 15px;
@@ -53,6 +61,14 @@ div > input:hover {
   width: 40px !important;
   height: 40px!important;
   border: 2px solid red;
+}
+.active2 {
+  width: 40px !important;
+  height: 40px!important;
+  border: 2px solid red;
+  margin-left: 7px;
+  margin-right: 7px;
+  margin-top: 2px;
 }
 .tacno {
    background-image: url("http://tvslagalica.com/images/skocko/tacno.png");

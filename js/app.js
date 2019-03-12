@@ -114,11 +114,13 @@ var vm = new Vue({
   data: {
      active_row: 0,
      gameStatus: '',
-     shuffledChars: shuffleArray(Characters)
+     shuffledChars: shuffleArray(Characters),
+	 winningChars: []
   },
   computed: {
     status: function () {
       if(this.gameStatus == '' && this.active_row == 7){
+	   this.winningChars = this.shuffledChars.slice(0,4);
        return 'Game over'; 
       }
       return this.gameStatus;
@@ -131,6 +133,7 @@ var vm = new Vue({
     this.$on('gameWon', () => {
     	this.gameStatus = 'Game won';
       this.active_row = -1;
+	  this.winningChars = this.shuffledChars.slice(0,4);
     }),
     console.log(JSON.stringify(this.shuffledChars));
   },

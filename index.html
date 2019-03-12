@@ -1,4 +1,6 @@
 <head>
+  <meta charset="utf-8">
+  <title>skočko</title>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
@@ -9,7 +11,12 @@
        v-for="current_row in 7" :key="current_row"
        v-bind:class="[ active_row + 1 == current_row ? 'on-clicks' : 'off-clicks']">           
        <row-m v-bind:shuffled-characters=shuffledChars></row-m>      
-      </div>    
+      </div>
+	  <div class="win"><input type="image" 
+           class="active2"
+           v-for="character in winningChars"           
+           :src="character.image">
+      </div>
     </div>
     <script src="js/app.js"></script>
 </body>
