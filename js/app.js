@@ -7,8 +7,8 @@ Vue.component('row-m', {
   },
   props: ['shuffledCharacters'], 
   created() {
-    this.$on('sendToParent', (obj) => {
-    	this.choosenCharacters.push(obj);
+    this.$on('sendToParent', (obj, index) => {
+      this.choosenCharacters.splice(index, 0, obj);     
     })
   },
 methods: {  
@@ -50,10 +50,10 @@ methods: {
     
 },      
   template:`<div>
-  				     <button-m></button-m>
-        	     <button-m></button-m>
-      		     <button-m></button-m>
-      		     <button-m></button-m>
+                <button-m v-bind:index-of-button=0></button-m>
+                <button-m v-bind:index-of-button=1></button-m>
+                <button-m v-bind:index-of-button=2></button-m>
+                <button-m v-bind:index-of-button=3></button-m>
                <button v-on:click="checkForCombination()">ok</button>
               <div class="rezultat">
                 <span             
@@ -74,7 +74,7 @@ Vue.component('button-m', {
         characters: JSON.parse(JSON.stringify(Characters)),
       }
  },
-  
+  props: ['indexOfButton'], 
   methods: {
     chooseACharacter: function(event) {
   		var choosen_char;
@@ -87,7 +87,7 @@ Vue.component('button-m', {
              char.display = false;
          }          
       });
-      this.$parent.$emit('sendToParent', choosen_char);
+      this.$parent.$emit('sendToParent', choosen_char, this.indexOfButton);
     },
 },
       
